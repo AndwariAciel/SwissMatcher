@@ -1,0 +1,34 @@
+name: Maven Release and Upload Jar
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11' # Adjust Java version as needed
+
+      - name: Maven release and build
+        run: |
+          mvn release:prepare
+          mvn package
+
+      - name: Upload JAR file to release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./target/*.jar # Replace with your actual JAR file path
+          asset_name: swissmatcher.jar # Replace with your desired JAR file name
+          asset_content_type: application/java-archive
