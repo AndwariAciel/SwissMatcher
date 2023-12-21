@@ -56,4 +56,8 @@
         </plugins>
     </build>
 
+    <scm>
+        <connection>scm:git:https://github.com/AndwariAciel/SwissMatcher.git</connection>
+    </scm>
+
 </project>
