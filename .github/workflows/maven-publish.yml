@@ -19,6 +19,11 @@ jobs:
           java-version: '11' # Adjust Java version as needed
           distribution: 'temurin'
 
+      - name: Configure Git User
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions"
+
       - name: Maven release and build
         run: |
           mvn release:prepare
@@ -26,6 +31,8 @@ jobs:
         env:
           CI_DEPLOY_USERNAME: ${{ secrets.CI_DEPLOY_USERNAME }}
           CI_DEPLOY_PASSWORD: ${{ secrets.CI_DEPLOY_PASSWORD }}
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ github.token }}
 
       - name: Upload JAR file to release
         uses: actions/upload-release-asset@v1
