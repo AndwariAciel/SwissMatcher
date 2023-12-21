@@ -4,7 +4,7 @@
 
     <groupId>de.andwari</groupId>
     <artifactId>swissmatcher</artifactId>
-    <version>0.3-SNAPSHOT</version>
+    <version>0.3</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -56,7 +56,7 @@
 
     <scm>
         <connection>scm:git:https://github.com/AndwariAciel/SwissMatcher.git</connection>
-        <tag>HEAD</tag>
+        <tag>swissmatcher-0.3</tag>
     </scm>
 
     <distributionManagement>
